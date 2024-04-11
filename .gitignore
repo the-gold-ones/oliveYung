@@ -5,4 +5,3 @@
 
 build
 src/main/java/com/olive/dao/MySQLConnector.java
-src/main/webapp/WEB-INF/lib/*
