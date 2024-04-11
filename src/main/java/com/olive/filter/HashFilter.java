@@ -18,14 +18,13 @@ import org.mindrot.jbcrypt.BCrypt;
 /**
  * Servlet Filter implementation class join
  */
-@WebFilter("/hashedPassword")
+@WebFilter("/tt")
 public class HashFilter implements Filter {
 
     /**
      * Default constructor. 
      */
     public HashFilter() {
-    	System.out.println("회원가입 필터시작...");
     }
 
 	/**
@@ -38,7 +37,7 @@ public class HashFilter implements Filter {
 	//Decode한 값을 저장함. 문제 생기면 수정하겠음.
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
 		HttpServletRequest req = (HttpServletRequest)request;
-		String password = req.getParameter("pwd");
+		String password = req.getParameter("pw");
 		if(password != null && !password.isEmpty()) {
 			String hashedPassword = BCrypt.hashpw(password, BCrypt.gensalt());
 			req.setAttribute("hashedPassword", URLDecoder.decode(hashedPassword, StandardCharsets.UTF_8));
@@ -46,11 +45,7 @@ public class HashFilter implements Filter {
 		chain.doFilter(request, response);
 	}
 
-	/**
-	 * @see Filter#init(FilterConfig)
-	 */
 	public void init(FilterConfig fConfig) throws ServletException {
-		// TODO Auto-generated method stub
 	}
 
 }

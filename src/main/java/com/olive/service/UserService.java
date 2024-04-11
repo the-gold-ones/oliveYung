@@ -1,11 +1,15 @@
 package com.olive.service;
 
+import java.util.Optional;
+
 import javax.servlet.http.HttpServletRequest;
+
+import org.mindrot.jbcrypt.BCrypt;
 
 import com.olive.dao.UserDAO;
 import com.olive.vo.User;
 
-public class UserService {
+public class UserService implements MemberService{
 	private UserDAO userDAO;
 	
 	public UserService(UserDAO userDAO) {
@@ -15,12 +19,12 @@ public class UserService {
 	public User toUserVO(HttpServletRequest request) {
 		User user = new User();
 		user.setId(request.getParameter("id"));
-		user.setPw(request.getParameter("pw"));
+		user.setPw((String)request.getAttribute("hashedPassword"));
 		user.setName(request.getParameter("name"));
 		user.setEmail(request.getParameter("email"));
-		user.setLevel(request.getParameter("level"));
 		user.setGender(request.getParameter("gender"));
 		user.setPhone(request.getParameter("phone"));
+		user.setAddress(request.getParameter("address"));
 		return user;
 	}
 	
@@ -29,8 +33,27 @@ public class UserService {
 		userDAO.insertUser(user);
 	}
 	
-	private void validateDuplication(String id) {
-		userDAO.findUserById(id).ifPresent(m -> {throw new IllegalArgumentException("Already exists");});
+	public void validateDuplication(String id) {
+		userDAO.findById(id).ifPresent(m -> {throw new IllegalArgumentException("Already exists");});
+	}
+	
+	public User getEntity(String id) {
+		return userDAO.findById(id).get();
+	}
+	
+	public User modifyUser(User user) {
+		userDAO.updateUser(user);
+		return getEntity(user.getId());
+	}
+	
+	@Override
+	public User login(String id, String pw) {
+		Optional<User> user = userDAO.findById(id);
+		if (!user.isPresent())
+			throw new IllegalArgumentException(id + ":no exist");
+		if (!BCrypt.checkpw(pw, user.get().getPw()))
+			throw new IllegalArgumentException("패스워드가 다릅니다.");
+		return user.get();
 	}
 	
 }

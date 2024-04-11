@@ -40,8 +40,8 @@ public class HashServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String password = request.getParameter("pw");
-		String action = request.getPathInfo();
-		System.out.println(action);
+		String action = request.getPathInfo(); // 앞에 /를 뺀 url pattern이름이 들어온다.
+//		System.out.println(action);
 		String path = "/index.jsp";
 		if(password != null && !password.isEmpty()) {
 			String hashedPassword = BCrypt.hashpw(password, BCrypt.gensalt());
@@ -50,6 +50,8 @@ public class HashServlet extends HttpServlet {
 		
 		if (action.equals("/join.do"))
 			path = "../join";
+		if (action.equals("/update.do"))
+			path = "../user/modify";
 		request.getRequestDispatcher(path).forward(request, response);
 	}
 

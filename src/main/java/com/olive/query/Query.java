@@ -2,7 +2,10 @@ package com.olive.query;
 
 public enum Query {
 	USER_BY_ID("select * from user where id = ?"),
-	JOIN("insert into user (id, pw, name, email, phone, level, gender) values (?,?,?,?,?,?,?)");
+	ADMIN_BY_ID("select * from admin where id = ?"),
+	JOIN("insert into user (id, pw, name, email, phone, gender, address) values (?,?,?,?,?,?,?)"),
+	UPDATE_USER("update user set pw=?, name=?, email=?, phone=?, address=? where idx=?");
+	
 	
 	private String query;
 	

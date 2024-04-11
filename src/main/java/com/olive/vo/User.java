@@ -9,6 +9,7 @@ public class User {
 	private String phone;
 	private String level;
 	private String gender;
+	private String address;
 	
 	public User() {
 		// TODO Auto-generated constructor stub
@@ -77,12 +78,21 @@ public class User {
 	public void setGender(String gender) {
 		this.gender = gender;
 	}
+	
+	public String getAddress() {
+		return address;
+	}
+
+	public void setAddress(String address) {
+		this.address = address;
+	}
 
 	@Override
 	public String toString() {
 		return "User [idx=" + idx + ", id=" + id + ", pw=" + pw + ", name=" + name + ", email=" + email + ", phone="
-				+ phone + ", level=" + level + ", gender=" + gender + "]";
+				+ phone + ", level=" + level + ", gender=" + gender + ", address=" + address + "]";
 	}
 
+	
 	
 }

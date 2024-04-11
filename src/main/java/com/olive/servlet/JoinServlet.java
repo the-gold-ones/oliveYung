@@ -33,6 +33,7 @@ public class JoinServlet extends HttpServlet {
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
 		}
+		response.sendRedirect("../index.jsp");
 	}
 	
 	
