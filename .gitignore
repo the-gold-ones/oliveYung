@@ -4,4 +4,3 @@
 .settings
 
 build
-src/main/java/com/olive/dao/MySQLConnector.java
