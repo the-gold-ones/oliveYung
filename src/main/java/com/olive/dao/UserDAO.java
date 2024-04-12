@@ -52,6 +52,7 @@ public class UserDAO implements MemberRepository{
 			pstmt.setString(5, user.getPhone());
 			pstmt.setString(6, user.getGender());
 			pstmt.setString(7, user.getAddress());
+			pstmt.setString(8, user.getBirthday());
 			pstmt.executeUpdate();
 		} catch (Exception e) {
 			e.printStackTrace();

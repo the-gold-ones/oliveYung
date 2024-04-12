@@ -38,8 +38,10 @@ header#header nav.top_util ul.menu_list li a::after {
     color: #333; /* 구분자 색상 설정 */
 }
 </style>
+<link rel="icon" href="${contextPath}/image/logo.png">
 </head>
 <body>
+
 <div id="container">
 	<form action="#" method="post">
 		<header id="header">

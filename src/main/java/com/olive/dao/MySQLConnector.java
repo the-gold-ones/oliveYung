@@ -17,7 +17,6 @@ public class MySQLConnector {
 			try {
 				Class.forName(DRIVER_PATH);
 				conn = DriverManager.getConnection(DB_URL, "root", "1234");
-				System.out.println("connection success!!");
 			} catch (Exception e) {
 				e.printStackTrace();
 			}

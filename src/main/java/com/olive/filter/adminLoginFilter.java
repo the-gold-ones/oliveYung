@@ -1,8 +1,6 @@
 package com.olive.filter;
 
 import java.io.IOException;
-import java.net.URLDecoder;
-import java.nio.charset.StandardCharsets;
 
 import javax.servlet.Filter;
 import javax.servlet.FilterChain;
@@ -12,19 +10,20 @@ import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletRequest;
-
-import org.mindrot.jbcrypt.BCrypt;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
- * Servlet Filter implementation class join
+ * Servlet Filter implementation class adminLoginFilter
  */
-@WebFilter("/tt")
-public class HashFilter implements Filter {
+@WebFilter("/admin/*")
+public class adminLoginFilter implements Filter {
 
     /**
      * Default constructor. 
      */
-    public HashFilter() {
+    public adminLoginFilter() {
+        // TODO Auto-generated constructor stub
     }
 
 	/**
@@ -34,18 +33,27 @@ public class HashFilter implements Filter {
 		// TODO Auto-generated method stub
 	}
 
-	//Decode한 값을 저장함. 문제 생기면 수정하겠음.
+	/**
+	 * @see Filter#doFilter(ServletRequest, ServletResponse, FilterChain)
+	 */
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
+		// TODO Auto-generated method stub
+		// place your code here
 		HttpServletRequest req = (HttpServletRequest)request;
-		String password = req.getParameter("pw");
-		if(password != null && !password.isEmpty()) {
-			String hashedPassword = BCrypt.hashpw(password, BCrypt.gensalt());
-			req.setAttribute("hashedPassword", URLDecoder.decode(hashedPassword, StandardCharsets.UTF_8));
+		HttpServletResponse resp = (HttpServletResponse)response;
+		HttpSession session = req.getSession();
+		if (session.getAttribute("admin") == null) {
+			resp.sendRedirect("adminLogin.jsp");
+			return ;
 		}
 		chain.doFilter(request, response);
 	}
 
+	/**
+	 * @see Filter#init(FilterConfig)
+	 */
 	public void init(FilterConfig fConfig) throws ServletException {
+		// TODO Auto-generated method stub
 	}
 
 }

@@ -198,6 +198,9 @@ $(document).ready(function() {
         
         <label for="address">주소:</label>
         <input type="text" id="address" name="address" required><br>
+        
+        <label for="birthday">생일:</label>
+        <input type="text" minlength="6" maxlength="6" name="birthday" required><br>
         <input type="submit" value="가입하기">
       <p class="message">Already registered? <a href="#">Sign In</a></p>
     </form>

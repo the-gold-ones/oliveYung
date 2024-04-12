@@ -25,6 +25,7 @@ public class UserService implements MemberService{
 		user.setGender(request.getParameter("gender"));
 		user.setPhone(request.getParameter("phone"));
 		user.setAddress(request.getParameter("address"));
+		user.setBirthday(request.getParameter("birthday"));
 		return user;
 	}
 	

@@ -27,20 +27,13 @@ public class UserModifyServlet extends HttpServlet {
     	userService = new UserService(new UserDAO());
     }
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		User user = userService.toUserVO(request);
 		userService.modifyUser(user);
 		request.getSession().removeAttribute("user");
 		request.getRequestDispatcher("userUpdate.jsp").forward(request, response);
 	}
-
 }

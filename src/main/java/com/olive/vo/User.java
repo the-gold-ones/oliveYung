@@ -10,10 +10,25 @@ public class User {
 	private String level;
 	private String gender;
 	private String address;
+	private String birthday;
 	
 	public User() {
 		// TODO Auto-generated constructor stub
 	}
+	
+	
+
+	public String getBirthday() {
+		return birthday;
+	}
+
+
+
+	public void setBirthday(String birthday) {
+		this.birthday = birthday;
+	}
+
+
 
 	public int getIdx() {
 		return idx;
@@ -90,9 +105,7 @@ public class User {
 	@Override
 	public String toString() {
 		return "User [idx=" + idx + ", id=" + id + ", pw=" + pw + ", name=" + name + ", email=" + email + ", phone="
-				+ phone + ", level=" + level + ", gender=" + gender + ", address=" + address + "]";
+				+ phone + ", level=" + level + ", gender=" + gender + ", address=" + address + ", birthday=" + birthday
+				+ "]";
 	}
-
-	
-	
 }
