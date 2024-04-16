@@ -33,7 +33,6 @@ public class UserModifyServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		User user = userService.toUserVO(request);
 		userService.modifyUser(user);
-		request.getSession().removeAttribute("user");
-		request.getRequestDispatcher("userUpdate.jsp").forward(request, response);
+		request.getRequestDispatcher("../index.jsp").forward(request, response);
 	}
 }

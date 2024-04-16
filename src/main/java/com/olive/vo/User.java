@@ -1,6 +1,12 @@
 package com.olive.vo;
-//idx	id	pw	name	email	phone	level	gender
-public class User {
+
+import javax.servlet.annotation.WebListener;
+import javax.servlet.http.HttpSessionEvent;
+import javax.servlet.http.HttpSessionListener;
+
+@WebListener
+public class User implements HttpSessionListener {
+	private static int activeSession = 0;
 	private int idx;
 	private String id;
 	private String pw;
@@ -13,22 +19,19 @@ public class User {
 	private String birthday;
 	
 	public User() {
-		// TODO Auto-generated constructor stub
 	}
-	
-	
 
 	public String getBirthday() {
 		return birthday;
 	}
 
-
+	public static int getActiveSession() {
+		return activeSession;
+	}
 
 	public void setBirthday(String birthday) {
 		this.birthday = birthday;
 	}
-
-
 
 	public int getIdx() {
 		return idx;
@@ -107,5 +110,15 @@ public class User {
 		return "User [idx=" + idx + ", id=" + id + ", pw=" + pw + ", name=" + name + ", email=" + email + ", phone="
 				+ phone + ", level=" + level + ", gender=" + gender + ", address=" + address + ", birthday=" + birthday
 				+ "]";
+	}
+	
+	@Override
+	public void sessionCreated(HttpSessionEvent se) {
+		++activeSession;
+	}
+	
+	@Override
+	public void sessionDestroyed(HttpSessionEvent se) {
+		--activeSession;
 	}
 }

@@ -18,6 +18,7 @@ public class UserService implements MemberService{
 	
 	public User toUserVO(HttpServletRequest request) {
 		User user = new User();
+		user.setIdx(Integer.parseInt(request.getParameter("idx")));
 		user.setId(request.getParameter("id"));
 		user.setPw((String)request.getAttribute("hashedPassword"));
 		user.setName(request.getParameter("name"));
@@ -43,7 +44,7 @@ public class UserService implements MemberService{
 	}
 	
 	public User modifyUser(User user) {
-		userDAO.updateUser(user);
+		userDAO.updateUserInfo(user);
 		return getEntity(user.getId());
 	}
 	

@@ -3,6 +3,8 @@ package com.olive.dao;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 import com.olive.query.Query;
@@ -60,9 +62,10 @@ public class UserDAO implements MemberRepository{
 		dataSource.close();
 	}
 	
-	public void updateUser(User user) {
+	public void updateUserInfo(User user) {
 		Connection conn = dataSource.getConnector();
-		try (PreparedStatement pstmt = conn.prepareStatement(Query.JOIN.getQuery())){
+		try (PreparedStatement pstmt = conn.prepareStatement(Query.UPDATE_USER.getQuery())){
+			System.out.println(user);
 			pstmt.setString(1, user.getPw());
 			pstmt.setString(2, user.getName());
 			pstmt.setString(3, user.getEmail());
@@ -74,5 +77,71 @@ public class UserDAO implements MemberRepository{
 			e.printStackTrace();
 		}
 		dataSource.close();
+	}
+	
+	public void updateUserLevel(int idx, String level) {
+		Connection conn = dataSource.getConnector();
+		try (PreparedStatement pstmt = conn.prepareStatement(Query.UPDATE_LEVEL.getQuery())){
+			pstmt.setString(1, level);
+			pstmt.setInt(2, idx);
+			pstmt.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		dataSource.close();
+	}
+	
+	public List<User> findAll(){
+		User user = null;
+		List<User> users = new ArrayList<>();
+		Connection conn = dataSource.getConnector();
+		try (PreparedStatement pstmt = conn.prepareStatement(Query.FIND_ALL.getQuery())){
+			ResultSet rs = pstmt.executeQuery();
+			while (rs.next()) {
+				user = new User();
+				user.setIdx(rs.getInt(1));
+				user.setId(rs.getString(2));
+				user.setPw(rs.getString(3));
+				user.setName(rs.getString(4));
+				user.setEmail(rs.getString(5));
+				user.setPhone(rs.getString(6));
+				user.setLevel(rs.getString(7));
+				user.setGender(rs.getString(8));
+				user.setAddress(rs.getString(9));
+				users.add(user);
+			}
+			rs.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		dataSource.close();
+		return users;
+	}
+	
+	public List<User> findByBirthdayALL() {
+		User user = null;
+		List<User> users = new ArrayList<>();
+		Connection conn = dataSource.getConnector();
+		try (PreparedStatement pstmt = conn.prepareStatement(Query.FIND_BIRTHDAY.getQuery())){
+			ResultSet rs = pstmt.executeQuery();
+			while (rs.next()) {
+				user = new User();
+				user.setIdx(rs.getInt(1));
+				user.setId(rs.getString(2));
+				user.setPw(rs.getString(3));
+				user.setName(rs.getString(4));
+				user.setEmail(rs.getString(5));
+				user.setPhone(rs.getString(6));
+				user.setLevel(rs.getString(7));
+				user.setGender(rs.getString(8));
+				user.setAddress(rs.getString(9));
+				users.add(user);
+			}
+			rs.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		dataSource.close();
+		return users;
 	}
 }

@@ -1,13 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+ <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<c:set var="contextPath" value="${pageContext.request.contextPath }"></c:set>
 <!DOCTYPE html>
 <html>
 <head>
-
+<script src="http://code.jquery.com/jquery-2.2.1.min.js"></script>
 <style type="text/css">
-
 @import url('https://fonts.googleapis.com/css?family=Montserrat:400,800');
-
 @import url(https://fonts.googleapis.com/css?family=Roboto:300);
 
 .login-page {
@@ -126,10 +126,11 @@ body {
 <jsp:include page="header.jsp" />
 <div class="login-page">
   <div class="form">
-    <form class="register-form" action="${contextPath}/hashPassword/update.do" method="post">
+    <form action="${contextPath}/hashPassword/update.do" method="post">
+      	<input type="hidden" name="idx" value="${sessionScope.user.idx}">
       	<label for="id">아이디:</label>
         <input type="text" name="id" value="${sessionScope.user.id}" readOnly>
-        
+
         <label for="pw">비밀번호:</label>
         <input type="password" id="pw" name="pw" required><br>
         <label for="pw">비밀번호확인:</label>

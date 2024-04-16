@@ -1,10 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
+
 <style type="text/css">
 footer{
 			padding: 20px;
@@ -24,8 +20,6 @@ footer div.to_admin a:hover{
 </style>
 
 
-</head>
-<body>
 <div>
 	<footer>
 		이메일 : admin@admin.com<br>
@@ -33,5 +27,3 @@ footer div.to_admin a:hover{
 		<a href="privacy.jsp">개인정보 처리 방침</a>
 	</footer>
 </div>
-</body>
-</html>

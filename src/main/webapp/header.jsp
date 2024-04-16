@@ -3,11 +3,12 @@
  <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <c:set var="contextPath" value="${pageContext.request.contextPath }"></c:set>
 
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
+<!-- <!DOCTYPE html> -->
+<!-- <html> -->
+<!-- <head> -->
+<!-- <meta charset="UTF-8"> -->
+<!-- <title>Insert title here</title> -->
+
 <style type="text/css">
 #container {
     display: flex;
@@ -39,8 +40,8 @@ header#header nav.top_util ul.menu_list li a::after {
 }
 </style>
 <link rel="icon" href="${contextPath}/image/logo.png">
-</head>
-<body>
+<!-- </head> -->
+<!-- <body> -->
 
 <div id="container">
 	<form action="#" method="post">
@@ -56,21 +57,21 @@ header#header nav.top_util ul.menu_list li a::after {
 						<input class="search_box" type="text" name="search" value="" placeholder=""/>
 						<input type="submit" value="검색">
 					</div>
-						<c:choose> 
+						<c:choose>
 							<c:when test="${ sessionScope.user == null }">
 							<ul class="menu_list">
 								<li><a href="${contextPath}/login.jsp">로그인/회원가입</a></li>
 								<li><a href="user/basket.jsp">장바구니</a></li>
-								<li><a href="user/membership/membership.jsp">멤버십/쿠폰</a></li>
+								<li><a href="${ contextPath }/memberships/membership.jsp">멤버십/쿠폰</a></li>
 							</ul>
 							</c:when>
 							<c:otherwise>
-							<ul class="menu_list">
+								<ul class="menu_list">
 									<li><a href="${contextPath}/logout">로그아웃</a></li>
 									<li><a href="#">마이페이지</a></li>
 									<li><a href="user/basket.jsp">장바구니</a></li>
-									<li><a href="${contextPath}/membership/membership.jsp">멤버십/쿠폰</a></li>
-							</ul>
+									<li><a href="${ contextPath }/memberships/membership.jsp">멤버십/쿠폰</a></li>
+								</ul>
 							</c:otherwise>
 						</c:choose>
 				</nav>
@@ -78,5 +79,5 @@ header#header nav.top_util ul.menu_list li a::after {
 	</form>
 </div>
 
-</body>
-</html>
+<!-- </body> -->
+<!-- </html> -->

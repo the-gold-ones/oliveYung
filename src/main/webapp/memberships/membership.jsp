@@ -8,7 +8,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>멤버십 페이지</title>
 
 <style type="text/css">
 .membership_header {
@@ -19,6 +19,7 @@
 table.membership_table {
 	text-align:center;
 	align:center;
+	border-collapse:collapse;
 }
 
 .membership_body {
@@ -36,17 +37,25 @@ table.membership_table {
 		display:block;
 		clear:both;
 }
+
+    .gold { color: gold; }
+    .black { color: black; }
+    .green { color: green; }
+    .pink { color: pink; }
+    .baby { color: blue; } /* 예시로 파란색 사용 */
+
 </style>
 </head>
 <body>
-
 <jsp:include page="../header.jsp" />
 <div class=membership_container>
 	<div>
 		<h2>멤버십</h2>
+		<c:if test="${ sessionScope.user != null }">
 		<hr>
 			<h3>${sessionScope.user.id }님의 등급 : ${sessionScope.user.level}</h3>
-			<h3>가지고 있는 쿠폰 : <a href="${contextPath}/user/coupon">${sessionScope.user.coupon }</a></h3>
+			<h3>가지고 있는 쿠폰 : <a href="${contextPath}/user/coupon">쿠폰목록</a></h3>
+		</c:if>
 		<h3>등급에 따른 다양한 혜택</h3>
 	</div>
 	<div class="membership_body">
@@ -62,11 +71,11 @@ table.membership_table {
 				<thead>
 				<tr>
 					<th scope="col">등급별 혜택</th>
-					<th scope="col" class="sffont-area gold">YUNG?<br>OLIVE</th>
-					<th scope="col" class="sffont-area black">YUNG<br>OLIVE</th>
-					<th scope="col" class="sffont-area green">YUNGYUNG<br>OLIVE</th>
-					<th scope="col" class="sffont-area pink">YUNG~<br>OLIVE</th>
-					<th scope="col" class="sffont-area baby">YUNG!<br>OLIVE</th>
+					<th scope="col" class="sffont-area gold">GOLD<br>UNG</th>
+					<th scope="col" class="sffont-area black">BLACK<br>UNG</th>
+					<th scope="col" class="sffont-area green">GREEN<br>UNG</th>
+					<th scope="col" class="sffont-area pink">PINK<br>UNG</th>
+					<th scope="col" class="sffont-area baby">BABY<br>UNG</th>
 				</tr>
 				</thead>
 				<tbody>
@@ -81,6 +90,7 @@ table.membership_table {
 				
 				<tr>
 					<th scope="row">쇼핑 쿠폰<span class="table-sub-title">*<span class="sffont-area">6</span>개월 내 <span class="sffont-area">1</span>회 온・오프라인 통합</span></th>
+					<td><span class="sffont-area">5</span>장</td>
 					<td><span class="sffont-area">4</span>장</td>
 					<td><span class="sffont-area">3</span>장</td>
 					<td><span class="sffont-area">2</span>장</td>
