@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.coh.controller.impl.AdminLoginController;
+import com.coh.controller.impl.LoginController;
 
 /**
  * Servlet implementation class FrontController
@@ -20,6 +21,7 @@ public class FrontController extends HttpServlet {
     private HashMap<String, Controller> controllerMap = new HashMap<>();
     public FrontController() {
     	controllerMap.put("/frontcontroller/adminLogin", new AdminLoginController());
+    	controllerMap.put("/frontcontroller/login", new LoginController());
     }
 
 	

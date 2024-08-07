@@ -208,7 +208,7 @@ $(document).ready(function() {
         <input type="submit" value="가입하기">
       <p class="message">Already registered? <a href="#">Sign In</a></p>
     </form>
-    <form class="login-form" action="login" method="post">
+    <form class="login-form" action="${contextPath}/frontcontroller/login" method="post">
       <c:if test="${ requestScope.error != null }"><h3>${ requestScope.error }</h3></c:if>
       <input type="text" name="id" placeholder="ID"/>
       <input type="password" name="pw" placeholder="password"/>
