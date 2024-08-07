@@ -37,3 +37,5 @@
   - [x] 리뷰
     - [x] 게시글 등록기능
   - [x] QNA 작성
+  
+  - [x] FrontController패턴 구현
