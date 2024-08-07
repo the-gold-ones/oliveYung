@@ -24,7 +24,6 @@ public class AdminLoginServlet extends HttpServlet {
      * @see HttpServlet#HttpServlet()
      */
     public AdminLoginServlet() {
-        super();
         adminService = new AdminService(new AdminDAO());
     }
 
