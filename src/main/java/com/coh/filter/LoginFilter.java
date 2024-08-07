@@ -18,7 +18,7 @@ import com.coh.vo.User;
 /**
  * Servlet Filter implementation class loginFilter
  */
-@WebFilter("/user/*")
+@WebFilter({"/frontcontroller/user/*", "/user/*"})
 public class LoginFilter implements Filter {
 
     /**

@@ -133,7 +133,7 @@ table.membership_table {
 				      <th class="th">${sessionScope.user.id }님의 등급 : ${sessionScope.user.level}</th>
 				    </tr>
 				    <tr>
-				      <td>가지고 있는 쿠폰 : <a href="${contextPath}/user/coupon">쿠폰목록</a></td>
+				      <td>가지고 있는 쿠폰 : <a href="${contextPath}/frontcontroller/user/coupon">쿠폰목록</a></td>
 				    </tr>
 				  </table>
 				</c:if>
