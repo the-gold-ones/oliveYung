@@ -14,6 +14,7 @@ import com.coh.controller.impl.CouponController;
 import com.coh.controller.impl.JoinController;
 import com.coh.controller.impl.LoginController;
 import com.coh.controller.impl.LogoutController;
+import com.coh.controller.impl.UserModifyController;
 
 /**
  * Servlet implementation class FrontController
@@ -28,6 +29,7 @@ public class FrontController extends HttpServlet {
     	controllerMap.put("/frontcontroller/logout", new LogoutController());
     	controllerMap.put("/frontcontroller/user/coupon", new CouponController());
     	controllerMap.put("/frontcontroller/join", new JoinController());
+    	controllerMap.put("/frontcontroller/user/modify", new UserModifyController());
     }
 
 	

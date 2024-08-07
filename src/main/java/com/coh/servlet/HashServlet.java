@@ -51,7 +51,7 @@ public class HashServlet extends HttpServlet {
 		if (action.equals("/join.do"))
 			path = "/frontcontroller/join";
 		if (action.equals("/update.do"))
-			path = "../user/modify";
+			path = "/frontcontroller/user/modify";
 		request.getRequestDispatcher(path).forward(request, response);
 	}
 
