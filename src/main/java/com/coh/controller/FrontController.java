@@ -10,7 +10,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.coh.controller.impl.AdminLoginController;
+import com.coh.controller.impl.CouponController;
 import com.coh.controller.impl.LoginController;
+import com.coh.controller.impl.LogoutController;
 
 /**
  * Servlet implementation class FrontController
@@ -22,6 +24,8 @@ public class FrontController extends HttpServlet {
     public FrontController() {
     	controllerMap.put("/frontcontroller/adminLogin", new AdminLoginController());
     	controllerMap.put("/frontcontroller/login", new LoginController());
+    	controllerMap.put("/frontcontroller/logout", new LogoutController());
+    	controllerMap.put("/frontcontroller/user/coupon", new CouponController());
     }
 
 	
@@ -35,6 +39,7 @@ public class FrontController extends HttpServlet {
 		System.out.println("URI :" + uri); //URI :/frontcontroller/adminLogin
 		System.out.println("URL :" + request.getRequestURL()); //URL :http://localhost:9000/frontcontroller/adminLogin
 		if (controller == null) {
+			response.sendError(HttpServletResponse.SC_NOT_FOUND);
 			return;
 		}
 		controller.process(request, response);

@@ -93,7 +93,7 @@ header#header nav.top_util ul.menu_list li a::after {
 							</c:when>
 							<c:otherwise>
 								<ul class="menu_list">
-									<li><a href="${contextPath}/logout">로그아웃</a></li>
+									<li><a href="${contextPath}/frontcontroller/logout">로그아웃</a></li>
 							<%-- 		<li><a href="${contextPath}/users/myPage.jsp">마이페이지</a></li> --%>
 	 								<li><a href='<c:url value="/PayListServlet"/>'>마이페이지</a></li> 
 									<li><a href="${pageContext.request.contextPath}/user/ShowBasket">장바구니</a></li>
