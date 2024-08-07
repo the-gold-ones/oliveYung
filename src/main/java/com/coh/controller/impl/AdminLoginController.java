@@ -28,7 +28,8 @@ public class AdminLoginController implements Controller{
 		} catch (Exception e) {
 			request.setAttribute("error", e.getMessage());
 		}
-		request.getRequestDispatcher("/WEB-INF/views/adminLogin.jsp").forward(request, response);
+		request.getRequestDispatcher("../adminLogin.jsp").forward(request, response);
+//		response.sendRedirect("../adminLogin.jsp"); //가능하지만 에러메시지를 출력할 수 없다. 
 	}
 
 

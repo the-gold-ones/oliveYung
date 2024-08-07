@@ -22,17 +22,6 @@ public class FrontController extends HttpServlet {
     	controllerMap.put("/frontcontroller/adminLogin", new AdminLoginController());
     }
 
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-	}
-
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
-	}
 	
 	@Override
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -41,9 +30,9 @@ public class FrontController extends HttpServlet {
 		String uri = request.getRequestURI();
 		
 		Controller controller = controllerMap.get(uri);
-		System.out.println(uri);
+		System.out.println("URI :" + uri); //URI :/frontcontroller/adminLogin
+		System.out.println("URL :" + request.getRequestURL()); //URL :http://localhost:9000/frontcontroller/adminLogin
 		if (controller == null) {
-			response.setStatus(404);
 			return;
 		}
 		controller.process(request, response);

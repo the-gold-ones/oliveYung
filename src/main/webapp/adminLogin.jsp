@@ -119,14 +119,14 @@ body {
     	<c:if test="${ requestScope.error != null }">
     		<h3>${requestScope.error}</h3>
     	</c:if>
-    <form class="login-form" action="adminLogin" method="post">
+    <form class="login-form" action="${contextPath}/frontcontroller/adminLogin" method="post">
       <input type="text" name="id" placeholder="ID"/>
       <input type="password" name="pw" placeholder="password"/>
       <button>login</button>
     </form>
     </c:when>
     <c:otherwise>
-    	<% response.sendRedirect("admin_main.jsp"); %>
+    	<c:redirect url="${contextPath}/admin_main.jsp"/>
     </c:otherwise> 
   </c:choose>
   </div>
